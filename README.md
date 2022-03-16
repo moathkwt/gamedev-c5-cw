@@ -8,3 +8,6 @@
 
 
 [classwork 4](https://docs.google.com/document/d/1LMevJAGz-AZ8MBwj7_SM5c8Yod3drPIECCG2nyO3qm8/edit#)
+
+
+[classwork 5](https://docs.google.com/document/d/1sJt2LMeqIYnq8CRd87nkFbNGCV6YQa9smRDIcGNn3X4/edit#)
