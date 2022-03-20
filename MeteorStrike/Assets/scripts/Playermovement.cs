@@ -8,6 +8,11 @@ public class Playermovement : MonoBehaviour
     [SerializeField] float xMin, xMax, zMin, zMax;
     [SerializeField] float tiltValue;
     [SerializeField] float Speed = 2.5f;
+    [SerializeField] float fireRate;
+    [SerializeField] GameObject shot;
+    [SerializeField] Transform shotSpawn;
+
+    float nextFire;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,12 +26,23 @@ public class Playermovement : MonoBehaviour
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
         rb.velocity = movement * Speed;
     }
+    void fire()
+    {
+        if (Input.GetButton("Fire1") && Time.time > nextFire)
+        {
+            
+            nextFire = Time.time + fireRate;
+            Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+        }
+    }
+
     void clampPosition()
     {
         float clampX = Mathf.Clamp(rb.position.x, xMin, xMax);
         float clampZ = Mathf.Clamp(rb.position.z, zMin, zMax);
         rb.position = new Vector3(clampX, 0.0f, clampZ);
     }
+
     private void FixedUpdate()
     {
         move();
@@ -37,7 +53,8 @@ public class Playermovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        move();
+        
+        fire();
     }
     void tilt()
     {
